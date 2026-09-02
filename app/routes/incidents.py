@@ -120,3 +120,19 @@ def delete_incident(incident_id: int):
         "message": "Incident deleted success",
         "id": incident_id
     }
+
+@router.post("/incidents/nuke")
+def reset_incidents_and_Id():
+    connection = get_connection()
+
+    connection.execute("DELETE FROM disasters")
+    connection.execute(
+        "DELETE FROM sqlite_sequence WHERE name = 'disasters'"
+    )
+
+    connection.commit()
+    connection.close()
+
+    return {
+        "message": "All incidents deleted and ID counter reset"
+    }

@@ -15,10 +15,21 @@ def initialize_database():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
             location TEXT NOT NULL,
-            reported_at TEXT NOT NULL,
-            status TEXT NOT NULL
+            status TEXT NOT NULL,
+            reported_at TEXT
         )
     """)
+
+    columns = connection.execute(
+        "PRAGMA table_info(disasters)"
+    ).fetchall()
+
+    column_names = [column["name"] for column in columns]
+
+    if "reported_at" not in column_names:
+        connection.execute(
+            "ALTER TABLE disasters ADD COLUMN reported_at TEXT"
+        )
 
     connection.commit()
     connection.close()
