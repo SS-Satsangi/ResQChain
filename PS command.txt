@@ -1,0 +1,13 @@
+FIRST TIME:
+cd "C:\Python Files\ResQChain"
+python -m venv .venv
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.venv\Scripts\Activate.ps1
+
+EVERY NEW SESSION:
+cd "C:\Python Files\ResQChain"
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.venv\Scripts\Activate.ps1
+
+WHEN FINISHED:
+deactivate
