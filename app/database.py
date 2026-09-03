@@ -31,5 +31,14 @@ def initialize_database():
             "ALTER TABLE disasters ADD COLUMN reported_at TEXT"
         )
 
+    connection.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT NOT NULL UNIQUE,
+            password_hash TEXT NOT NULL,
+            role TEXT NOT NULL
+        )
+    """)
+
     connection.commit()
     connection.close()

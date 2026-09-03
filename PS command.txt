@@ -1,13 +1,14 @@
-FIRST TIME:
-cd "C:\Python Files\ResQChain"
-python -m venv .venv
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-.venv\Scripts\Activate.ps1
+PS C:\Users\LENOVO> cd "C:\Python Files\ResQChain"
+PS C:\Python Files\ResQChain> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+PS C:\Python Files\ResQChain> .venv\Scripts\Activate.ps1
+(.venv) PS C:\Python Files\ResQChain> uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
-EVERY NEW SESSION:
-cd "C:\Python Files\ResQChain"
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-.venv\Scripts\Activate.ps1
+PS C:\Users\LENOVO> cd "C:\Python Files\ResQChain"
+PS C:\Python Files\ResQChain> .\cloudflared.exe tunnel --url http://localhost:8000
 
-WHEN FINISHED:
-deactivate
+PS C:\Users\LENOVO> cd "C:\Python Files\ResQChain"
+PS C:\Python Files\ResQChain> git status
+PS C:\Python Files\ResQChain> git add .
+PS C:\Python Files\ResQChain> git commit -m "Add incident nuke endpoint"
+PS C:\Python Files\ResQChain> git push
+PS C:\Python Files\ResQChain> git status
